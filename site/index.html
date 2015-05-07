@@ -14,41 +14,91 @@
 	
      <!-- creando el formulario-->
 
-     <form ng-submit="addPost()">
-     	 <!-- Input del titutlo -->
-     	<input type="text" ng-model="title">
+    <!DOCTYPE html>
+<html lang="es">
+<head>
+	<meta charset="UTF-8">
+	<title>ReedItgam APP</title>
+	<link rel="stylesheet" 
+	href="./vendor/bootstrap/css/bootstrap.css">
+	<style>
+
+     .glyphicon-thumbs-up {cursor: pointer;}
+
+	</style>
+</head>
+<body ng-app="reeditgam" 
+	ng-controller="mainCtrl">
+	<div class="row"> 
+
+	<div class="col-md-6 col-md-offset-3">
+		<div class="page-header">
+			<h1>Reeditgam!!!</h1>
+			
+		</div>
+		
+	</div>
+	</div>
+
+	
+     <!-- creando el formulario-->
+
+     <form ng-submit="addPost()" style="margin-top:30px">
+		<h3>Agregar un nuevo post</h3>
+		<div class="form-group">
+     	 
+        <!-- Input del titutlo -->
+     	<input 
+		class="form-control"
+		placeholder="Title"
+     	type="text" 
+     	ng-model="title">
+     	 </div>
+         <div class="form-group">
+         	
+         	<input
+         	 class="form-control"
+			 placeholder="Link"
+         	 type="text" 
+         	 ng-model="link">
+         </div>   	          
+
          
-        <br>    	          
-
-         <input type="text" ng-model="link">
-
-         <br>
-         <button type="submit">Post</button> 
+         <button 
+		 class="btn btn-primary"
+         type="submit">Post</button> 
 
      </form>
-
+     <!--Se renderea el post-->
 	<div ng-repeat="post in posts | orderBy: '-upvotes'"> 
 
-		<span ng-click="incrementUpvotes(post)">^</span>
+		<span class="glyphicon glyphicon-thumbs-up" 
+		ng-click="incrementUpvotes(post)"></span>
 
+			{{post.upvotes}}
+
+			<span style="font-size:20px; margin.left:10px">
+				
+			</span>
 		 <!-- Agregando los links-->
 		 <a  ng-show="post.link" href="{{post.link}}">
 
 		 	{{post.title}}
 		 	
 		 </a>
-
-         <span ng-hide="post.link">
-         	
-         
+        
+         <span ng-hide="post.link">      	
+		
 		{{post.title}}
+        
         </span>
 
-		- Likes: {{post.upvotes}}
-	</div>
+		</div>
 	<!-- CArgando librerias -->
 	<!-- es una buena practica al final cargar los scripts -->
 	<!-- cargando angular-->
+	<script 
+	src=""></script>
 	<script 
 	type="text/javascript"
 	src="vendor/angular/angular.js"
